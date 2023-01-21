@@ -1,4 +1,4 @@
-const { OutServerError, RequestValidationError, NotAvailableError, BadRequestError} = require("../errors");
+const { RequestValidationError, NotAvailableError, BadRequestError} = require("../errors");
 const {Axios, AxiosError} = require("axios");
 const {CustomError} = require("../errors/custom-error");
 
@@ -11,36 +11,20 @@ module.exports.axiosreq = async (method, url, headers, body) => {
     headers: headers,
     data: body,
   };
-  let result;
 
   const response = await axios(config)
     .then(function (response) {
       if (response.status === 201 || response.status === 200) {
-        result = response.data;
-        console.log("response", response.data);
+        // result = response.data;
+        console.log("url:", url);
+        console.log("Response status code", response.status);
+        return response.status;
       }
     })
     .catch((error) => {
-      console.log("ERROR");
-      console.log(error);
-      error.response.status
-
-      if(error instanceof AxiosError)
-        throw new BadRequestError(error.response.data.message)
-      if (error.response.status === 500 || error.response.status === 502) {
-        throw new OutServerError();
-      }
-
-      if (error.response.status === 400) {
-        throw new RequestValidationError();
-      } else if (error.request) {
-        console.log(error.message);
-        throw new NotAvailableError();
-      } else {
-        console.log(error.message);
-        throw new NotAvailableError();
-      }
+      console.log("url:", url);
+      console.log("ERROR status code:");
+      console.log(error.response.status);
+      return error.response.status;
     });
-
-  return result;
 };
