@@ -23,6 +23,7 @@ module.exports.axiosreq = async (method, url, headers, body) => {
     .catch((error) => {
       console.log("ERROR");
       console.log(error);
+      error.response.status
 
       if(error instanceof AxiosError)
         throw new BadRequestError(error.response.data.message)
