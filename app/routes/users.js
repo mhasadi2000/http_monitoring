@@ -21,7 +21,6 @@ const verifyOTPOpts = (fastify) => {
 
 const addUserOpts = (fastify) => {
   return {
-    onRequest: [fastify.authenticate],
     handler: userController.addUserinfo(fastify),
   };
 };
@@ -47,6 +46,13 @@ const getUrlStatsOpts = (fastify) => {
   };
 };
 
+const getAlertsOpts = (fastify) => {
+  return {
+    onRequest: [fastify.authenticate],
+    handler: userController.getAlertsinfo(fastify),
+  };
+};
+
 
 function userRoutes(fastify, options, done) {
 
@@ -63,15 +69,10 @@ function userRoutes(fastify, options, done) {
   
   //get specific url stat
   fastify.get("/api/urls/:urlID",getUrlStatsOpts(fastify) );
-  
-  //delete url
-  // fastify.delete("/api/urls/:urlID", );
 
   //get url alerts
-  fastify.get("/api/alerts", );
+  fastify.get("/api/alerts", getAlertsOpts(fastify));
 
-  //dismis url alerts
-  // fastify.put("/api/alerts/:urlID", );
 
   done();
 }

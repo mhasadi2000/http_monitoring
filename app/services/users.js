@@ -71,14 +71,14 @@ exports.addUrl = async (pgInstance, data,user_id) => {
 
   const date= new Date();
   const { rowCount: userCount } = await pgInstance.query(
-    "insert into urls (address,treshold,user_id,created_at) " +
+    "insert into urls (address,threshold,user_id,created_at) " +
       "values ($1, $2,$3,$4);",
-    [data.address, data.treshold, user_id, date]
+    [data.address, data.threshold, user_id, date]
   );
 
   
   const { rows: urlRows} = await pgInstance.query(
-    "select id from urls where address = $1 and treshold = $2;",
+    "select id from urls where address = $1 and threshold = $2;",
     [data.address, data.treshold]
   );
 
@@ -123,6 +123,30 @@ exports.getUrlStats = async (pgInstance,params,query,user_id) => {
   
 };
 
+
+exports.getalerts = async (pgInstance,user_id) => {
+
+  const { rows: urlRows} = await pgInstance.query(
+    "select * from urls where user_id = $1;",
+    [user_id]
+  );
+
+  let result =[];
+  for (const url of urlRows) {
+
+    const { rows: requestRows} = await pgInstance.query(
+      "select * from requests where url_id = $1;",
+      [url.id]
+      );
+
+    result.push(...requestRows)
+  }
+
+  return{
+    data:[...result]
+  };
+  
+};
 
 
 

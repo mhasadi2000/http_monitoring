@@ -1,4 +1,4 @@
-const { verify, addUser, addUrl, getUrl, getUrlStats } = require("../services/users");
+const { verify, addUser, addUrl, getUrl, getUrlStats, getalerts } = require("../services/users");
 
 exports.verifyOTP = (fastify) => {
   return (req, reply) => {
@@ -27,6 +27,12 @@ exports.getUrlsinfo = (fastify) => {
 exports.getUrlsStatsinfo = (fastify) => {
   return (req, reply) => {
     return getUrlStats(fastify.pg, req.params,req.query,req.user.user_id);
+  };
+};
+
+exports.getAlertsinfo = (fastify) => {
+  return (req, reply) => {
+    return getalerts(fastify.pg,req.user.user_id);
   };
 };
 
