@@ -71,15 +71,15 @@ exports.addUrl = async (pgInstance, data,user_id) => {
 
   const date= new Date();
   const { rowCount: userCount } = await pgInstance.query(
-    "insert into urls (address,threshold,user_id,created_at) " +
-      "values ($1, $2,$3,$4);",
-    [data.address, data.threshold, user_id, date]
+    "insert into urls (address,threshold,method,user_id,created_at) " +
+      "values ($1, $2,$3,$4,$5);",
+    [data.address, data.threshold,data.method, user_id, date]
   );
 
   
   const { rows: urlRows} = await pgInstance.query(
-    "select id from urls where address = $1 and threshold = $2;",
-    [data.address, data.threshold]
+    "select id from urls where address = $1 and method = $2;",
+    [data.address, data.method]
   );
 
   const urlid = urlRows[0].id;

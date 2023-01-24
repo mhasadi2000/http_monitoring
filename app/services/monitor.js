@@ -24,7 +24,7 @@ exports.requestMonitor = async (pgInstance) =>{
     for (const url of urlRows) {
       console.log("*********");
         const responseStatusCode = await axiosreq(
-            'GET',
+            url.method,
             url.address,
             {
                 "Content-Type": "application/json",
