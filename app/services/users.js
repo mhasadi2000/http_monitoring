@@ -79,7 +79,7 @@ exports.addUrl = async (pgInstance, data,user_id) => {
   
   const { rows: urlRows} = await pgInstance.query(
     "select id from urls where address = $1 and threshold = $2;",
-    [data.address, data.treshold]
+    [data.address, data.threshold]
   );
 
   const urlid = urlRows[0].id;
@@ -135,7 +135,7 @@ exports.getalerts = async (pgInstance,user_id) => {
   for (const url of urlRows) {
 
     const { rows: requestRows} = await pgInstance.query(
-      "select * from requests where url_id = $1;",
+      "select * from alerts where url_id = $1;",
       [url.id]
       );
 

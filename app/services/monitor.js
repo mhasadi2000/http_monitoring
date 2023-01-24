@@ -22,6 +22,7 @@ exports.requestMonitor = async (pgInstance) =>{
       console.log("get urls");
 
     for (const url of urlRows) {
+      console.log("*********");
         const responseStatusCode = await axiosreq(
             'GET',
             url.address,
@@ -30,7 +31,6 @@ exports.requestMonitor = async (pgInstance) =>{
             }
         );
 
-          console.log("*********");
           console.log("axios req responseStatusCode",responseStatusCode);
 
         const { rowCount: requestCount } = await pgInstance.query(
