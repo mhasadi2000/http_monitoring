@@ -4,6 +4,9 @@ const userController = require("../controllers/users");
 const {
   verifyOTPDataSchema,
   verifyOTPResponse,
+  signupResponse,
+  urlDataSchema,
+  addUrlResponse,
 } = require("../schemas/users");
 
 const verifyOTPOpts = (fastify) => {
@@ -21,12 +24,24 @@ const verifyOTPOpts = (fastify) => {
 
 const addUserOpts = (fastify) => {
   return {
+    schema: {
+      body: verifyOTPDataSchema,
+      response: {
+        200: signupResponse,
+      },
+    },
     handler: userController.addUserinfo(fastify),
   };
 };
 
 const addUrlOpts = (fastify) => {
   return {
+    schema: {
+      body: urlDataSchema,
+      response: {
+        200: addUrlResponse,
+      },
+    },
     onRequest: [fastify.authenticate],
     handler: userController.addUrlinfo(fastify),
   };

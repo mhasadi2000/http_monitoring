@@ -119,13 +119,8 @@ const start = async () => {
     fastify.register(fastifyCron, {
       jobs: [
         {
-          // Only these two properties are required,
-          // the rest is from the node-cron API:
-          // https://github.com/kelektiv/node-cron#api
           cronTime: '*/25 * * * * *',
     
-          // Note: the callbacks (onTick & onComplete) take the server
-          // as an argument, as opposed to nothing in the node-cron API:
           onTick: async fastify => {
             console.log("to apps");
             await requestMonitor(fastify.pg)

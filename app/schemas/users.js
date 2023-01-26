@@ -10,6 +10,17 @@ const verifyOTPDataSchema = {
   },
 };
 
+const urlDataSchema = {
+  type: "object",
+  properties: {
+    address:{type:'string'},
+    method: {
+      type: "string",
+    },
+    threshold: {type: "string"}
+  },
+};
+
 // responses
 
 const verifyOTPResponse = {
@@ -23,10 +34,35 @@ const verifyOTPResponse = {
   },
 };
 
+const signupResponse = {
+  type: "object",
+  properties: {
+    data: {
+      userID: {
+        type: "integer",
+      },
+    },
+  },
+};
+
+const addUrlResponse = {
+  type: "object",
+  properties: {
+    data: {
+      urlID: {
+        type: "integer",
+      },
+    },
+  },
+};
+
 
 
 module.exports = {
   verifyOTPDataSchema,
 
   verifyOTPResponse,
+  signupResponse,
+  urlDataSchema,
+  addUrlResponse,
 };

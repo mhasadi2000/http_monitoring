@@ -1,0 +1,591 @@
+{
+	"info": {
+		"_postman_id": "5421a200-76c6-426f-b40c-c807c4090130",
+		"name": "web-final",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18580144"
+	},
+	"item": [
+		{
+			"name": "sign up",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"if(pm.response.code === 200) {\r",
+							"    const jsonResponse = pm.response.json()\r",
+							"    pm.environment.set(\"accessToken\", jsonResponse.data.access_token);\r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"asadi\",\r\n    \"password\": \"123456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/api/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"users"
+					]
+				},
+				"description": "otp verification.\n\nimports otp from environment variables that has been saved in \"otp get dev\" route."
+			},
+			"response": [
+				{
+					"name": "login",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"asadi\",\r\n    \"password\": \"0123456789\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/users/verify",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"verify"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "vary",
+							"value": "Origin"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "content-length",
+							"value": "172"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 10 Nov 2022 16:10:51 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=72"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJpYXQiOjE2NjgwOTY2NTEsImV4cCI6MTY2ODEwNzQ1MX0.NaaOrnIJq1IL1uT2SMrjb-AlThAQNpFkhKb8STI5aLQ\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"if(pm.response.code === 200) {\r",
+							"    const jsonResponse = pm.response.json()\r",
+							"    pm.environment.set(\"accessToken\", jsonResponse.data.access_token);\r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"asadi\",\r\n    \"password\": \"123456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/api/users/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"users",
+						"login"
+					]
+				},
+				"description": "otp verification.\n\nimports otp from environment variables that has been saved in \"otp get dev\" route."
+			},
+			"response": [
+				{
+					"name": "login",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"asadi\",\r\n    \"password\": \"0123456789\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/users/verify",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"verify"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "vary",
+							"value": "Origin"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "content-length",
+							"value": "172"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 10 Nov 2022 16:10:51 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=72"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJpYXQiOjE2NjgwOTY2NTEsImV4cCI6MTY2ODEwNzQ1MX0.NaaOrnIJq1IL1uT2SMrjb-AlThAQNpFkhKb8STI5aLQ\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "add url",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJpYXQiOjE2NzQ1NzA4MzksImV4cCI6MTY3NDU4MTYzOX0.61AzCkJCeNATcACrT0Jrbz_ZlAa9Zq5mECT8NAElIL0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"address\":\"https://stackoverflow.com/questions/40086565/can-a-cron-job-run-every-x-seconds\",\"method\":\"GET\",\"threshold\":10}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3002/api/urls",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3002",
+					"path": [
+						"api",
+						"urls"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "add url",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"address\":\"https://stackoverflow.com/questions/40086565/can-a-cron-job-run-every-x-seconds\",\"threshold\":10}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3002/api/urls",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"api",
+								"urls"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "vary",
+							"value": "Origin"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "content-length",
+							"value": "20"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 24 Jan 2023 14:56:36 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=72"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"urlID\": 5\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "get url",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJpYXQiOjE2NzQ1NzA4MzksImV4cCI6MTY3NDU4MTYzOX0.61AzCkJCeNATcACrT0Jrbz_ZlAa9Zq5mECT8NAElIL0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3002/api/urls",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3002",
+					"path": [
+						"api",
+						"urls"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "get url",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3002/api/urls",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"api",
+								"urls"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "vary",
+							"value": "Origin"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "content-length",
+							"value": "592"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 24 Jan 2023 14:37:37 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=72"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": [\n        {\n            \"id\": 2,\n            \"user_id\": 1,\n            \"created_at\": \"2023-01-24T09:49:16.241Z\",\n            \"threshold\": 10,\n            \"failed_times\": 12,\n            \"address\": \"https://www.npmjs.com/package/fastify-cron\"\n        },\n        {\n            \"id\": 1,\n            \"user_id\": 1,\n            \"created_at\": \"2023-01-24T09:47:20.367Z\",\n            \"threshold\": 10,\n            \"failed_times\": 13,\n            \"address\": \"https://www.npmjs.com/package/fastify-cron\"\n        },\n        {\n            \"id\": 3,\n            \"user_id\": 1,\n            \"created_at\": \"2023-01-24T14:34:09.865Z\",\n            \"threshold\": 10,\n            \"failed_times\": null,\n            \"address\": \"https://morioh.com/p/495a8b3e2882\"\n        },\n        {\n            \"id\": 4,\n            \"user_id\": 1,\n            \"created_at\": \"2023-01-24T14:34:58.504Z\",\n            \"threshold\": 10,\n            \"failed_times\": null,\n            \"address\": \"https://morioh.com/p/495a8b3e2882\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "get specific url",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJpYXQiOjE2NzQ1NzA4MzksImV4cCI6MTY3NDU4MTYzOX0.61AzCkJCeNATcACrT0Jrbz_ZlAa9Zq5mECT8NAElIL0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3002/api/urls/:urlID?from_time=2023-01-24 00:00:00.000&to_time=2023-01-25 00:00:00.000",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3002",
+					"path": [
+						"api",
+						"urls",
+						":urlID"
+					],
+					"query": [
+						{
+							"key": "from_time",
+							"value": "2023-01-24 00:00:00.000"
+						},
+						{
+							"key": "to_time",
+							"value": "2023-01-25 00:00:00.000"
+						}
+					],
+					"variable": [
+						{
+							"key": "urlID",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "get specific url",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3002/api/urls/:urlID?from_time=2023-01-24 00:00:00.000&to_time=2023-01-25 00:00:00.000",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"api",
+								"urls",
+								":urlID"
+							],
+							"query": [
+								{
+									"key": "from_time",
+									"value": "2023-01-24 00:00:00.000"
+								},
+								{
+									"key": "to_time",
+									"value": "2023-01-25 00:00:00.000"
+								}
+							],
+							"variable": [
+								{
+									"key": "urlID",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "vary",
+							"value": "Origin"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "content-length",
+							"value": "3344"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 24 Jan 2023 14:41:12 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=72"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": [\n        {\n            \"id\": 2,\n            \"url_id\": 2,\n            \"created_at\": \"2023-01-24T11:40:01.431Z\",\n            \"result\": 200\n        },\n        {\n            \"id\": 4,\n            \"url_id\": 2,\n            \"created_at\": \"2023-01-24T11:40:26.447Z\",\n            \"result\": 200\n        },\n        {\n            \"id\": 6,\n            \"url_id\": 2,\n            \"created_at\": \"2023-01-24T11:40:51.430Z\",\n            \"result\": 200\n        },\n        {\n            \"id\": 8,\n            \"url_id\": 2,\n            \"created_at\": \"2023-01-24T11:41:01.370Z\",\n            \"result\": 200\n        },\n        {\n            \"id\": 10,\n            \"url_id\": 2,\n            \"created_at\": \"2023-01-24T11:41:26.447Z\",\n            \"result\": 200\n        },\n        {\n            \"id\": 12,\n            \"url_id\": 2,\n            \"created_at\": \"2023-01-24T11:52:26.378Z\",\n            \"result\": 200\n        },\n        {\n            \"id\": 14,\n            \"url_id\": 2,\n            \"created_at\": \"2023-01-24T11:52:51.388Z\",\n            \"result\": 200\n        },\n        {\n            \"id\": 16,\n            \"url_id\": 2,\n            \"created_at\": \"2023-01-24T11:53:01.360Z\",\n            \"result\": 200\n        },\n        {\n            \"id\": 18,\n            \"url_id\": 2,\n            \"created_at\": \"2023-01-24T11:53:26.343Z\",\n            \"result\": 200\n        },\n        {\n            \"id\": 22,\n            \"url_id\": 2,\n            \"created_at\": \"2023-01-24T11:54:51.414Z\",\n            \"result\": 200\n        },\n        {\n            \"id\": 24,\n            \"url_id\": 2,\n            \"created_at\": \"2023-01-24T11:55:01.326Z\",\n            \"result\": 200\n        },\n        {\n            \"id\": 26,\n            \"url_id\": 2,\n            \"created_at\": \"2023-01-24T11:55:26.280Z\",\n            \"result\": 200\n        },\n        {\n            \"id\": 29,\n            \"url_id\": 2,\n            \"created_at\": \"2023-01-24T13:05:52.870Z\",\n            \"result\": 200\n        },\n        {\n            \"id\": 30,\n            \"url_id\": 2,\n            \"created_at\": \"2023-01-24T13:05:54.065Z\",\n            \"result\": 200\n        },\n        {\n            \"id\": 32,\n            \"url_id\": 2,\n            \"created_at\": \"2023-01-24T13:06:01.315Z\",\n            \"result\": 200\n        },\n        {\n            \"id\": 34,\n            \"url_id\": 2,\n            \"created_at\": \"2023-01-24T13:06:29.464Z\",\n            \"result\": 200\n        },\n        {\n            \"id\": 36,\n            \"url_id\": 2,\n            \"created_at\": \"2023-01-24T13:07:26.292Z\",\n            \"result\": 404\n        },\n        {\n            \"id\": 38,\n            \"url_id\": 2,\n            \"created_at\": \"2023-01-24T13:09:11.042Z\",\n            \"result\": 404\n        },\n        {\n            \"id\": 40,\n            \"url_id\": 2,\n            \"created_at\": \"2023-01-24T13:09:25.690Z\",\n            \"result\": 404\n        },\n        {\n            \"id\": 42,\n            \"url_id\": 2,\n            \"created_at\": \"2023-01-24T14:02:01.021Z\",\n            \"result\": 200\n        },\n        {\n            \"id\": 44,\n            \"url_id\": 2,\n            \"created_at\": \"2023-01-24T14:02:27.600Z\",\n            \"result\": 200\n        },\n        {\n            \"id\": 46,\n            \"url_id\": 2,\n            \"created_at\": \"2023-01-24T14:33:32.037Z\",\n            \"result\": 200\n        },\n        {\n            \"id\": 48,\n            \"url_id\": 2,\n            \"created_at\": \"2023-01-24T14:33:51.528Z\",\n            \"result\": 200\n        },\n        {\n            \"id\": 50,\n            \"url_id\": 2,\n            \"created_at\": \"2023-01-24T14:34:00.674Z\",\n            \"result\": 200\n        },\n        {\n            \"id\": 52,\n            \"url_id\": 2,\n            \"created_at\": \"2023-01-24T14:34:25.736Z\",\n            \"result\": 200\n        },\n        {\n            \"id\": 55,\n            \"url_id\": 2,\n            \"created_at\": \"2023-01-24T14:34:52.611Z\",\n            \"result\": 200\n        },\n        {\n            \"id\": 58,\n            \"url_id\": 2,\n            \"created_at\": \"2023-01-24T14:35:00.700Z\",\n            \"result\": 200\n        },\n        {\n            \"id\": 62,\n            \"url_id\": 2,\n            \"created_at\": \"2023-01-24T14:35:27.552Z\",\n            \"result\": 200\n        },\n        {\n            \"id\": 66,\n            \"url_id\": 2,\n            \"created_at\": \"2023-01-24T14:35:50.616Z\",\n            \"result\": 200\n        },\n        {\n            \"id\": 70,\n            \"url_id\": 2,\n            \"created_at\": \"2023-01-24T14:36:00.648Z\",\n            \"result\": 200\n        },\n        {\n            \"id\": 74,\n            \"url_id\": 2,\n            \"created_at\": \"2023-01-24T14:36:25.633Z\",\n            \"result\": 200\n        },\n        {\n            \"id\": 78,\n            \"url_id\": 2,\n            \"created_at\": \"2023-01-24T14:36:50.714Z\",\n            \"result\": 200\n        },\n        {\n            \"id\": 82,\n            \"url_id\": 2,\n            \"created_at\": \"2023-01-24T14:37:02.411Z\",\n            \"result\": 200\n        },\n        {\n            \"id\": 86,\n            \"url_id\": 2,\n            \"created_at\": \"2023-01-24T14:37:25.678Z\",\n            \"result\": 200\n        },\n        {\n            \"id\": 90,\n            \"url_id\": 2,\n            \"created_at\": \"2023-01-24T14:37:50.805Z\",\n            \"result\": 200\n        },\n        {\n            \"id\": 94,\n            \"url_id\": 2,\n            \"created_at\": \"2023-01-24T14:38:00.706Z\",\n            \"result\": 200\n        },\n        {\n            \"id\": 98,\n            \"url_id\": 2,\n            \"created_at\": \"2023-01-24T14:38:25.651Z\",\n            \"result\": 200\n        },\n        {\n            \"id\": 102,\n            \"url_id\": 2,\n            \"created_at\": \"2023-01-24T14:38:50.934Z\",\n            \"result\": 200\n        },\n        {\n            \"id\": 106,\n            \"url_id\": 2,\n            \"created_at\": \"2023-01-24T14:39:00.799Z\",\n            \"result\": 200\n        },\n        {\n            \"id\": 110,\n            \"url_id\": 2,\n            \"created_at\": \"2023-01-24T14:39:25.681Z\",\n            \"result\": 200\n        },\n        {\n            \"id\": 114,\n            \"url_id\": 2,\n            \"created_at\": \"2023-01-24T14:39:50.697Z\",\n            \"result\": 200\n        },\n        {\n            \"id\": 118,\n            \"url_id\": 2,\n            \"created_at\": \"2023-01-24T14:40:00.670Z\",\n            \"result\": 200\n        },\n        {\n            \"id\": 122,\n            \"url_id\": 2,\n            \"created_at\": \"2023-01-24T14:40:25.654Z\",\n            \"result\": 200\n        },\n        {\n            \"id\": 126,\n            \"url_id\": 2,\n            \"created_at\": \"2023-01-24T14:40:50.714Z\",\n            \"result\": 200\n        },\n        {\n            \"id\": 130,\n            \"url_id\": 2,\n            \"created_at\": \"2023-01-24T14:41:00.669Z\",\n            \"result\": 200\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "get alerts",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJpYXQiOjE2NzQ1NzA4MzksImV4cCI6MTY3NDU4MTYzOX0.61AzCkJCeNATcACrT0Jrbz_ZlAa9Zq5mECT8NAElIL0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3002/api/alerts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3002",
+					"path": [
+						"api",
+						"alerts"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "get alerts",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3002/api/alerts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"api",
+								"alerts"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "vary",
+							"value": "Origin"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "content-length",
+							"value": "230"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 24 Jan 2023 15:04:14 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=72"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": [\n        {\n            \"id\": 2,\n            \"url_address\": \"https://morioh.com/p/495a8b3e2882\",\n            \"url_id\": 4,\n            \"created_at\": \"2023-01-24T15:03:00.588Z\"\n        },\n        {\n            \"id\": 1,\n            \"url_address\": \"https://morioh.com/p/495a8b3e2882\",\n            \"url_id\": 3,\n            \"created_at\": \"2023-01-24T15:02:27.548Z\"\n        }\n    ]\n}"
+				}
+			]
+		}
+	]
+}
