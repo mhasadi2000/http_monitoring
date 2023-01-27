@@ -3,9 +3,9 @@ http monitoring using nodejs and restful api (web final project)
 
 
 ## Documentation
-* [Swagger] visit route ``` /docs ``` to watch routes infos in Swagger.
+* **Swagger** visit route ``` /docs ``` to watch routes infos in Swagger.
 
-* [Postman] you can also use the postman json file in the project to access examples and details.
+* **Postman** you can also use the postman json file in the project to access examples and details.
 
 ### what the routes do in abbriviation
 
